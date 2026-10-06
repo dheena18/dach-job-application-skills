@@ -1,6 +1,6 @@
 # resume-matcher
 
-A Claude Code skill that reads a pasted job posting and recommends which of
+An agent skill that reads a pasted job posting and recommends which of
 this candidate's eight specialized resume variants fits best — or says
 plainly if none of them do, or if a posting needs tailoring first.
 

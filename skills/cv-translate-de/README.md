@@ -1,6 +1,6 @@
 # cv-translate-de
 
-A Claude Code skill that rebuilds an English resume (.docx) into professional,
+An agent skill that rebuilds an English resume (.docx) into professional,
 natively-written German — while keeping the original file's exact visual
 format: fonts, colors, bold/italic placement, bullet and tab layout, and page
 count.
@@ -47,7 +47,7 @@ same document, with the same look.
 
 ## How to use it
 
-Ask Claude something like: *"translate my resume to German"*, *"I need a
+Ask your AI agent something like: *"translate my resume to German"*, *"I need a
 German Lebenslauf version of this CV for a job in Munich"*, or paste/point
 to your `.docx` and say you need the German version. The skill triggers on
 resume/CV/Lebenslauf + English→German context, even if you don't mention

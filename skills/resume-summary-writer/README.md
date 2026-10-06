@@ -1,6 +1,6 @@
 # resume-summary-writer
 
-A Claude Code skill for the single hardest paragraph on a resume: the
+An agent skill for the single hardest paragraph on a resume: the
 summary/profile block at the top. Writes one from scratch, rewrites a weak
 one, or gives an honest critique of an existing one — for English (US/
 international) or German (DACH/Kurzprofil) conventions.
@@ -39,13 +39,13 @@ skill's job to deserve its own focused tool.
 
 ## How to use it
 
-Ask Claude something like: *"write me a resume summary"*, *"is my CV's
+Ask your AI agent something like: *"write me a resume summary"*, *"is my CV's
 opening paragraph any good?"*, *"my Kurzprofil sounds off, can you fix
 it"*, or paste an existing summary and ask for feedback or a rewrite.
 
 You'll be asked for whatever's missing: your role/title, years of
 experience, domain, at least one real number to prove it, target market
-(English/German), and what you're targeting next — or just point Claude at
+(English/German), and what you're targeting next — or just point your agent at
 your full resume and it'll pull a proof point from your actual bullets
 instead of asking you to remember one.
 

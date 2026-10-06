@@ -40,7 +40,16 @@ from keyword_audit import (
 # template, not a generic reusable tool — hardcoded paths here are
 # intentional, unlike the other skills in this project, which
 # stay generic because they're meant to work on anyone's documents.
-PROJECT_ROOT = Path(__file__).resolve().parents[4]
+def _find_project_root() -> Path:
+    # Walk up to the repo root (marked by AGENTS.md), so the script works
+    # from skills/, .claude/skills/ or .agents/skills/ alike.
+    for parent in Path(__file__).resolve().parents:
+        if (parent / "AGENTS.md").exists():
+            return parent
+    return Path.cwd()
+
+
+PROJECT_ROOT = _find_project_root()
 RESUME_DIR_EN = PROJECT_ROOT / "job-resume" / "EN"
 RESUME_DIR_DE = PROJECT_ROOT / "job-resume" / "DE"
 

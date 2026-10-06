@@ -1,6 +1,6 @@
 # resume-tailor
 
-A Claude Code skill that tailors an existing resume/CV to a specific job
+An agent skill that tailors an existing resume/CV to a specific job
 posting — for English and German markets — while keeping the document's
 exact visual format and never inventing a qualification.
 
@@ -38,7 +38,7 @@ exact visual format and never inventing a qualification.
 
 ## How to use it
 
-Give Claude your resume and a job posting (paste the text, a link, or a
+Give your agent your resume and a job posting (paste the text, a link, or a
 file) and ask to tailor it — or just paste a posting and your resume
 together and ask why you're not hearing back from applications like it.
 

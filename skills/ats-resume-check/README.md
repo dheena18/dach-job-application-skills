@@ -1,6 +1,6 @@
 # ats-resume-check
 
-A standalone Claude Code skill: checks whether a resume will parse
+A standalone agent skill: checks whether a resume will parse
 correctly in an Applicant Tracking System, independent of any translation
 or tailoring work. Read-only — it reports, it never edits your file.
 
@@ -34,7 +34,7 @@ without running a full translation or tailoring pass first.
 
 ## How to use it
 
-Ask Claude something like: *"check if my resume is ATS-friendly"*, *"will
+Ask your AI agent something like: *"check if my resume is ATS-friendly"*, *"will
 Workday parse this correctly"*, *"scan this CV for ATS issues"*. Give it
 your `.docx` (and a PDF if you have one exported already — otherwise it'll
 ask you to export one, since the structural check specifically needs the

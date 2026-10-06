@@ -15,3 +15,7 @@ __pycache__/
 .odysseus*
 .DS_Store
 Thumbs.db
+
+# Agent skill links created by setup scripts
+.claude/
+.agents/

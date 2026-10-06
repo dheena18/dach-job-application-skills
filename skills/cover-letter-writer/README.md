@@ -1,6 +1,6 @@
 # cover-letter-writer
 
-A Claude Code skill that writes a cover letter / Anschreiben for a specific
+An agent skill that writes a cover letter / Anschreiben for a specific
 job posting, in English or German, built from your real resume and the
 posting's actual requirements — styled to match the resume it's paired
 with.
@@ -32,7 +32,7 @@ with.
 
 ## How to use it
 
-Give Claude the job posting and the resume you're submitting for that
+Give your agent the job posting and the resume you're submitting for that
 application (prefer an already-tailored version if one exists) and ask for
 a cover letter, in English or German. You'll be asked how to handle any
 crucial gap the posting names as a hard requirement, same as
