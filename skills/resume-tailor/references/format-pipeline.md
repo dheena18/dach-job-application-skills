@@ -11,7 +11,7 @@ operation "daunting" because paragraphs can carry markup — comments,
 bookmarks, section properties — that spans or depends on position).
 
 There's a much safer approach, and it's already implemented:
-**`docx_rewrite.py` (copied from `cv-translate-de`) already treats
+**`docx_rewrite.py` (shared with `cv-translate-de`) already treats
 "paragraph slot" and "content assigned to that slot" as independent.** A
 rewrite plan entry says "paragraph index N gets these segments" — it never
 says anything about where N is relative to other paragraphs. So "reorder"
@@ -82,8 +82,7 @@ file per application — never overwrite the master.
    for German output, `german-tailoring.md` plus `cv-translate-de`'s
    `native-german-style.md` while drafting the actual wording.
 5. `docx_rewrite.py <master.docx> plan.json <output.docx>` — apply it.
-6. Validate the XML (the `anthropic-skills:docx` skill's `validate.py`, if
-   installed — locate its path same as `cv-translate-de` does).
+6. Validate the file: `python skills/_shared/scripts/validate_docx.py <output.docx>`.
 7. `check_pages.py both` — check real page count. Tailoring should rarely
    change page count much (you're reordering/trimming, not translating into
    a longer language), but verify rather than assume.
@@ -96,8 +95,7 @@ file per application — never overwrite the master.
 ## Output location and naming
 
 Never overwrite the master resume or write into its folder. Save tailored
-output to the project's output location for generated application
-documents, named to identify the target: `<original-filename>-<Company>.docx`
+output to `output/resume-tailor/`, named to identify the target: `<original-filename>-<Company>.docx`
 and the matching `.pdf` (e.g. `Firstname_Lastname_Resume-Acme.docx`), so
 multiple tailored versions for different applications don't collide or get
 confused with each other or with the master.

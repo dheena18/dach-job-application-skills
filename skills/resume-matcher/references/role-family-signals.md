@@ -2,7 +2,7 @@
 
 This file is the classification logic: what distinguishes each role family
 in a posting's actual language, independent of title and independent of
-shared tools. Read this after running `scripts/compare_resumes.py`, before
+shared tools. Read this after running `skills/resume-matcher/scripts/compare_resumes.py`, before
 naming a verdict.
 
 ## Why title doesn't work here

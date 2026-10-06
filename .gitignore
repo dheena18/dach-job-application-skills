@@ -1,21 +1,34 @@
-# Personal documents - never commit
-Resume/
-job-resume/
-output/
+# ALLOWLIST: everything at the repo root is ignored unless listed below.
+# This protects personal files (resumes, letters, notes, photos, new folders
+# like CV/ or applications/) from an accidental `git add -A`.
+/*
+!/.gitignore
+!/LICENSE
+!/README.md
+!/README.de.md
+!/AGENTS.md
+!/CLAUDE.md
+!/requirements.txt
+!/setup.sh
+!/setup.ps1
+!/skills/
+
+# Inside skills/: never commit documents or caches, even by mistake
 *.docx
 *.pdf
 *.doc
 *.odt
-
-# Local / tooling
-.env
-.env.*
+*.rtf
+*.pages
+*.zip
 __pycache__/
 *.pyc
-.odysseus*
 .DS_Store
 Thumbs.db
 
-# Agent skill links created by setup scripts
-.claude/
-.agents/
+# Private working folders (already covered by the allowlist, kept explicit)
+Resume/
+job-resume/
+output/
+.env
+.env.*

@@ -21,7 +21,7 @@ this explicitly instead of discovering it after the fact.
 ### 1. Inspect before writing anything
 
 ```
-python scripts/docx_inspect.py <input.docx> structure.json
+python skills/_shared/scripts/docx_inspect.py <input.docx> structure.json
 ```
 
 Read `structure.json`. For every paragraph you plan to rewrite, note:
@@ -50,7 +50,7 @@ fix wording as text than after it's embedded in a run-segment plan.
 Turn the drafted German text into `plan.json`: one entry per paragraph index,
 each with a `segments` list carrying the exact same bold/color/size pattern
 you recorded in step 1 for that paragraph, just with the new German text (see
-`scripts/docx_rewrite.py` docstring for the exact schema).
+`skills/_shared/scripts/docx_rewrite.py` docstring for the exact schema).
 
 Where a bullet's English version bolds a phrase mid-sentence, split your
 German segments the same way: normal-run, bold-run, normal-run — matching
@@ -60,7 +60,7 @@ word order will differ.
 ### 4. Apply it
 
 ```
-python scripts/docx_rewrite.py <input.docx> plan.json <output.docx>
+python skills/_shared/scripts/docx_rewrite.py <input.docx> plan.json <output.docx>
 ```
 
 This only touches the runs inside the paragraphs listed in the plan. Every
@@ -71,13 +71,12 @@ bullet numbering, spacing), is untouched because the script never edits
 ### 5. Validate the XML didn't get corrupted
 
 ```
-python "<docx-skill-path>/scripts/office/validate.py" <output.docx>
+python skills/_shared/scripts/validate_docx.py <output.docx>
 ```
 
-(The `anthropic-skills:docx` skill ships this — it's a standalone XSD
-validator, no LibreOffice needed. Locate its path once per session; it does
-not live inside this skill's own folder.) A clean validation means the file
-is structurally sound OOXML; it says nothing about content or page count.
+(Portable check shipped with this repo: valid zip, required parts present,
+every XML part well-formed, opens in python-docx.) A clean validation means
+the file is structurally sound; it says nothing about content or page count.
 
 ### 6. Check the page count against reality
 
@@ -86,7 +85,7 @@ actual rendering engine. This environment has Microsoft Word installed but
 not LibreOffice, so use Word via COM automation:
 
 ```
-python scripts/check_pages.py both <output.docx> <output.pdf>
+python skills/_shared/scripts/check_pages.py both <output.docx> <output.pdf>
 ```
 
 Compare the printed `pages=` value against the original document's page
@@ -116,7 +115,7 @@ this with the user on. Never reach for step 4 silently either:
    that carries an actual quantity, qualifier, or fact — "over 100" losing
    its "over" is a fact change, not a compression.
 3. **Scale down paragraph spacing, once the user has agreed to it** — use
-   `scripts/scale_spacing.py <in> <factor> <out>` with a factor like 0.75.
+   `skills/cv-translate-de/scripts/scale_spacing.py <in> <factor> <out>` with a factor like 0.75.
    This only touches the gaps between paragraphs and around headings, never
    font size. The font must stay exactly as readable as the source; if
    spacing alone can't close the gap, that's a signal to go back to the
@@ -144,7 +143,7 @@ this with the user on. Never reach for step 4 silently either:
 ### 8. Run the mechanical lint
 
 ```
-python scripts/lint_german.py <output.docx> --plan plan.json
+python skills/cv-translate-de/scripts/lint_german.py <output.docx> --plan plan.json
 ```
 
 Always pass `--plan` with the same plan you gave `docx_rewrite.py`. Without
@@ -167,7 +166,7 @@ the German actually read well, is anything visually off).
 ### 9. Check ATS-readability on the exported PDF
 
 ```
-python scripts/check_ats.py <output.pdf> --email <email> --phone <phone> --name <name> --expect-pages <n> --headings-in-order <SECTION1> <SECTION2> ...
+python skills/_shared/scripts/check_ats.py pdf <output.pdf> --email <email> --phone <phone> --name <name> --expect-pages <n> --headings-in-order <SECTION1> <SECTION2> ...
 ```
 
 This doesn't simulate Workday, Personio, SAP SuccessFactors or any other
@@ -208,8 +207,7 @@ that wrapped differently than expected) show up here, not in the JSON.
 
 Never write the translated file back into the same folder as the source
 resume, and never overwrite the source file. Save it to the project's
-`output/cv-translate-de/` folder (or wherever the user's project keeps
-generated application documents).
+`output/cv-translate-de/` folder (see AGENTS.md for the folder layout).
 
 Deliver both the `.docx` and a `.pdf` exported from it (step 6 already
 produces the PDF — keep it, don't regenerate it separately). Name both

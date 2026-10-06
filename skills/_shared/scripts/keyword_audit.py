@@ -7,7 +7,7 @@ simplemma (a small, pure-Python, zero-heavy-dependency lemmatizer covering
 German and English) — no spaCy/NLTK/embedding models. The output is a
 starting point for a human decision, not a score to optimise. A term in
 the "missing" list should only be added to the resume if the candidate
-actually has that experience — see references/fit-and-keywords.md for how
+actually has that experience — see skills/resume-tailor/references/fit-and-keywords.md for how
 to sort missing terms into "true but forgotten" / "true but worded
 differently" / "not true", and for why ~75-85% is the target, not 100%.
 
@@ -320,7 +320,7 @@ def render(result: dict[str, list], resume_path: str, job_path: str) -> str:
         "",
         "This is a word overlap, not a fit score. Add a missing term only if it is true.",
         f"Target ~75-85%, the range career-advice tools that publish guidance actually",
-        "recommend — not 100%. See references/avoiding-ai-tailored-tells.md.",
+        "recommend — not 100%. See skills/resume-tailor/references/avoiding-ai-tailored-tells.md.",
         "",
         "## Matched",
         "",

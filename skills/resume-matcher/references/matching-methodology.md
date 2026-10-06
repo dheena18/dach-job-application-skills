@@ -34,7 +34,7 @@ splits detected skills into "specialized skills" — occupation-specific,
 e.g. feature-store design, dimensional modeling — versus "software
 skills" — named tools everyone lists, e.g. Docker, Kubernetes): **the
 differentiator is the specialized, non-shared vocabulary, not the shared
-tool list.** `scripts/compare_resumes.py` implements exactly this split —
+tool list.** `skills/resume-matcher/scripts/compare_resumes.py` implements exactly this split —
 see `references/resume-profiles.md` for each resume's specialized term set
 — and ranks by specialized-term overlap, reporting overall percentage only
 as reference context, never as the primary number.
@@ -77,7 +77,7 @@ the actual bar — not whether a number appears at all.
    says the person will actually *do*, and classify that against
    `role-family-signals.md`'s verb-to-family mapping.
 3. **Specialized (non-shared) skill/technology overlap**, via
-   `scripts/compare_resumes.py`. A supporting, mechanical signal — run it,
+   `skills/resume-matcher/scripts/compare_resumes.py`. A supporting, mechanical signal — run it,
    but never report its percentage as the verdict on its own.
 
 Two secondary checks, applied after the above:

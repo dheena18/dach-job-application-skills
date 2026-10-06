@@ -62,10 +62,12 @@ ats-resume-check/
 │   │                             "universal ATS algorithm" myth
 │   └── mechanical-checks.md      Exactly what's checked, and the check's
 │                                 own honest blind spots
-└── scripts/
-    └── check_ats.py              docx structural check + PDF text check
 ```
+
+Scripts live in `skills/_shared/scripts/`: `check_ats.py` (docx structural
+check + PDF text check), `ats_score.py` (Workday/HackerRank-style scoring
+estimates) and `keyword_audit.py`.
 
 ## Requirements
 
-Python 3 with `python-docx` and `pypdf` installed.
+Python 3 with the packages in the repo's `requirements.txt` (`pip install -r requirements.txt`).

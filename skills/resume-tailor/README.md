@@ -55,12 +55,11 @@ resume so multiple tailored versions never collide.
 
 ## Requirements
 
-Same as `cv-translate-de`, plus `simplemma` (small, pure-Python, zero heavy
-dependencies — used for basic English/German lemmatization in the keyword
-matcher, e.g. recognizing "system" and "systems" as the same word):
-Python 3 with `python-docx`, `pywin32`, `simplemma`,
-`defusedxml`, and `pypdf` installed; Microsoft Word for accurate page-count
-checking (Windows-only for that specific step).
+Python 3 with the packages in the repo's `requirements.txt`
+(`pip install -r requirements.txt`). `simplemma` (small, pure-Python) gives
+basic English/German lemmatization in the keyword matcher, e.g. recognizing
+"system" and "systems" as the same word. For page count / PDF export:
+LibreOffice (any OS) or Word + `pywin32` on Windows.
 
 ## Files
 
@@ -75,16 +74,9 @@ resume-tailor/
 │   │                                  DACH ATS landscape
 │   └── format-pipeline.md             Fixed-slot reassignment strategy,
 │                                      master-resume principle
-└── scripts/
-    ├── keyword_audit.py       Deterministic keyword diff (docx-aware,
-    │                          bilingual EN/DE), adapted from the
-    │                          job-application-kit reference project
-    ├── docx_inspect.py        (shared design with cv-translate-de)
-    ├── docx_rewrite.py        (shared design with cv-translate-de)
-    ├── check_pages.py         (shared design with cv-translate-de)
-    └── check_ats.py           (shared design with ats-resume-check)
 ```
 
-These scripts are copied rather than cross-referenced from the other
-skills, so `resume-tailor` works standalone even if the others aren't
-installed. If you improve one copy, consider updating the others.
+This skill has no scripts of its own. It uses the shared tools in
+`skills/_shared/scripts/`: `keyword_audit.py` (deterministic keyword diff,
+docx-aware, bilingual EN/DE), `docx_inspect.py`, `docx_rewrite.py`,
+`validate_docx.py`, `check_pages.py` and `check_ats.py`.

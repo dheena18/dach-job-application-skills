@@ -1,0 +1,8 @@
+# Python 3.9+
+python-docx>=1.1    # all skills that read/write .docx
+pypdf>=4.0          # ATS PDF checks, page counting
+simplemma>=1.0      # optional: lemmatised keyword matching (fails soft if absent)
+pywin32>=306; sys_platform == "win32"   # optional: exact page count via Microsoft Word
+
+# Not a pip package: LibreOffice (`soffice`) is the cross-platform engine for
+# PDF export / page count when Word is not available. https://www.libreoffice.org

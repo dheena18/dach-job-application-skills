@@ -26,9 +26,13 @@ from __future__ import annotations
 
 import argparse
 import re
+import sys
 from pathlib import Path
 
-from keyword_audit import (
+# keyword_audit.py lives in the repo-wide shared scripts folder.
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "_shared" / "scripts"))
+
+from keyword_audit import (  # noqa: E402
     contains_term,
     extract_terms,
     normalize,
@@ -180,6 +184,20 @@ def mentions_research_credential(job_text: str) -> bool:
     return bool(_PHD_PATTERN.search(job_text.lower()))
 
 
+def _find_resume(resume_dir: Path, key: str, lang: str, fallback: str) -> Path:
+    """Locate a resume by its variant key, ignoring the person's name and case.
+
+    Matches `<anything>_<key>.docx` (EN) or `<anything>_<key>-DE.docx` (DE),
+    so your own filenames work without editing RESUME_PROFILES.
+    """
+    suffix = f"_{key}-de.docx" if lang == "de" else f"_{key}.docx"
+    if resume_dir.is_dir():
+        for f in sorted(resume_dir.iterdir()):
+            if f.name.lower().endswith(suffix.lower()):
+                return f
+    return resume_dir / fallback
+
+
 def compare(job_text: str, lang: str, extra: set[str], exclude: set[str]) -> dict:
     job_search = prepare(job_text)
     job_terms = extract_terms(job_text, extra, exclude)
@@ -189,7 +207,7 @@ def compare(job_text: str, lang: str, extra: set[str], exclude: set[str]) -> dic
     for key, profile in RESUME_PROFILES.items():
         resume_dir = RESUME_DIR_DE if lang == "de" else RESUME_DIR_EN
         filename = profile["file_de"] if lang == "de" else profile["file_en"]
-        resume_path = resume_dir / filename
+        resume_path = _find_resume(resume_dir, key, lang, filename)
         if not resume_path.exists():
             results.append({"key": key, "profile": profile, "error": f"not found: {resume_path}"})
             continue

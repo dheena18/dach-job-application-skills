@@ -4,7 +4,7 @@ This file is a **template**: edit it to describe your own resume set. It
 names example filenames on purpose, because that's what this skill routes
 between. Each resume
 exists in English (in `job-resume/EN/`) and German (in `job-resume/DE/`,
-`-DE` suffix). Keep this file and `scripts/compare_resumes.py`'s
+`-DE` suffix). Keep this file and `skills/resume-matcher/scripts/compare_resumes.py`'s
 `RESUME_PROFILES` dict in sync if a resume's content changes.
 
 ## AI_LLM — `Firstname_Lastname_AI_LLM.docx`

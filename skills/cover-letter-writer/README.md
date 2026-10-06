@@ -46,8 +46,8 @@ separately from the resume and from letters for other applications.
 
 ## Requirements
 
-Python 3 with `python-docx` and `pywin32` installed; Microsoft Word for
-accurate page-count checking (Windows-only for that specific step).
+Python 3 with the packages in the repo's `requirements.txt`. For page
+count / PDF export: LibreOffice (any OS) or Word + `pywin32` on Windows.
 
 ## Files
 
@@ -73,14 +73,10 @@ cover-letter-writer/
 │                                        a fresh docx instead of reassigning
 │                                        content like the other skills do
 └── scripts/
-    ├── docx_inspect.py            (shared design with cv-translate-de /
-    │                              resume-tailor, plus font-name extraction)
     ├── build_cover_letter_docx.py Builds a new styled docx from a content
     │                              plan + extracted style profile
-    ├── lint_letter.py             Mechanical banned-phrase/word-count lint
-    └── check_pages.py             (shared design with cv-translate-de)
+    └── lint_letter.py             Mechanical banned-phrase/word-count lint
 ```
 
-These scripts are copied rather than cross-referenced from the other
-skills, so `cover-letter-writer` works standalone even if the others
-aren't installed. If you improve one copy, consider updating the others.
+`docx_inspect.py` (includes font-name extraction) and `check_pages.py` are
+shared tools in `skills/_shared/scripts/`.

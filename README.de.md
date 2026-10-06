@@ -23,10 +23,10 @@ Alle Skills liegen in [`skills/`](skills/). Jeder hat eine eigene `SKILL.md` und
 
 1. Repo klonen oder `skills/` und `AGENTS.md` in ein eigenes Projekt kopieren, dann `setup.ps1` (Windows) bzw. `./setup.sh` (macOS/Linux) ausführen. Das verlinkt `skills/` nach `.claude/skills` und `.agents/skills`, damit Claude Code, Codex und ähnliche Agenten die Skills automatisch finden.
 2. **Eigene** Lebensläufe ins Projekt legen (z. B. `job-resume/EN/`, `job-resume/DE/`). Sie sind hier bewusst per `.gitignore` ausgeschlossen.
-3. Für `resume-matcher`: `references/resume-profiles.md` und `RESUME_PROFILES` in `scripts/compare_resumes.py` an das eigene Lebenslauf-Set anpassen (die acht Profile sind Beispiele).
+3. Für `resume-matcher`: `references/resume-profiles.md` und `RESUME_PROFILES` in `scripts/compare_resumes.py` an das eigene Lebenslauf-Set anpassen (die acht Profile sind Beispiele). Lebenslauf-Dateien werden über den Variantennamen gefunden, z. B. `<Name>_Cloud_Engineer.docx` und `<Name>_Cloud_Engineer-DE.docx`; eigene Dateinamen funktionieren also.
 4. Projekt in einem beliebigen KI-Coding-Agenten öffnen (Claude Code, Codex, Cursor, Gemini CLI, Copilot, …). Sie lesen [`AGENTS.md`](AGENTS.md) mit Skill-Übersicht und Ordnerstruktur. Dann z. B. fragen: *„Welcher Lebenslauf passt zu dieser Anzeige?“*, *„Passe meinen Lebenslauf an diese Stelle an“*, *„Schreibe ein deutsches Anschreiben für diese Rolle“*.
 
-Die Python-Skripte benötigen `python-docx` (und LibreOffice für PDF-Export bzw. Seitenprüfung, wo im jeweiligen Skill angegeben).
+Abhängigkeiten einmalig mit `pip install -r requirements.txt` installieren. Seitenzahl und PDF-Export nutzen unter Windows Microsoft Word (falls vorhanden), sonst LibreOffice (jedes Betriebssystem). Skripte, die mehrere Skills nutzen, liegen in [`skills/_shared/`](skills/_shared/).
 
 ## Datenschutz
 

@@ -34,7 +34,7 @@ specializes in.
    (German or English) — the verdict must compare against the
    language-matched resume set, since each of the eight resumes exists in
    both languages.
-2. **Run `scripts/compare_resumes.py --job <posting>`**, passing
+2. **Run `skills/resume-matcher/scripts/compare_resumes.py --job <posting>`**, passing
    `--exclude` with the company name and location so they don't pollute the
    term extraction. This gives a deterministic specialized-term-overlap
    table across all eight resumes, ranked by specialized overlap, not raw

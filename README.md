@@ -23,10 +23,10 @@ All skills live in [`skills/`](skills/). Each has its own `SKILL.md` and `README
 
 1. Clone this repo, or copy `skills/` and `AGENTS.md` into your own project, then run `setup.ps1` (Windows) or `./setup.sh` (macOS/Linux). This links `skills/` into `.claude/skills` and `.agents/skills` so Claude Code, Codex and similar agents discover the skills automatically.
 2. Put **your own** resumes in the project (e.g. `job-resume/EN/`, `job-resume/DE/`). They are git-ignored here on purpose.
-3. For `resume-matcher`, edit `references/resume-profiles.md` and `RESUME_PROFILES` in `scripts/compare_resumes.py` to describe your resume set (the eight profiles are examples).
+3. For `resume-matcher`, edit `references/resume-profiles.md` and `RESUME_PROFILES` in `scripts/compare_resumes.py` to describe your resume set (the eight profiles are examples). Resume files are matched by variant name, e.g. `<AnyName>_Cloud_Engineer.docx` and `<AnyName>_Cloud_Engineer-DE.docx`, so your own file names work.
 4. Open the project in any AI coding agent (Claude Code, Codex, Cursor, Gemini CLI, Copilot, …). They read [`AGENTS.md`](AGENTS.md), which lists the skills and the folder layout. Then ask, e.g. *"Which resume fits this posting?"*, *"Tailor my resume to this job"*, *"Write a German Anschreiben for this role"*.
 
-The Python scripts need `python-docx` (and LibreOffice for PDF export / page checks where noted in each skill).
+Install the dependencies once with `pip install -r requirements.txt`. Page count and PDF export use Microsoft Word on Windows if present, otherwise LibreOffice (any OS). Scripts shared by several skills live in [`skills/_shared/`](skills/_shared/).
 
 ## Privacy
 

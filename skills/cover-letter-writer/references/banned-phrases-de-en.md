@@ -1,7 +1,7 @@
 # Banned phrases and AI-writing tells
 
 Recruiters read a high volume of AI-written letters and recognize the shape
-fast. This list is what `scripts/lint_letter.py` checks mechanically; read
+fast. This list is what `skills/cover-letter-writer/scripts/lint_letter.py` checks mechanically; read
 it before drafting, not just after.
 
 ## Universal (both languages)

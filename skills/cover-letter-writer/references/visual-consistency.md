@@ -21,7 +21,7 @@ new `.docx` from scratch is the right call, not a shortcut.
 
 ## Extracting the style profile
 
-Run `scripts/docx_inspect.py <resume.docx>` on the actual resume file
+Run `skills/_shared/scripts/docx_inspect.py <resume.docx>` on the actual resume file
 being submitted for this application (the master or the already-tailored
 version, whichever is going out with this letter). From the output,
 identify:
@@ -57,8 +57,8 @@ different fonts and palettes entirely.
 ## Building the file
 
 Feed the extracted style profile plus the letter's content into
-`scripts/build_cover_letter_docx.py` (see its docstring for the exact plan
-format). Run `scripts/check_pages.py both` afterward the same way every
+`skills/cover-letter-writer/scripts/build_cover_letter_docx.py` (see its docstring for the exact plan
+format). Run `python skills/_shared/scripts/check_pages.py both <letter.docx> <letter.pdf>` afterward the same way every
 other docx-producing skill in this project does — verify the real page
 count and get a PDF for a final visual check, rather than assuming
 python-docx's output renders the way the JSON plan implies.

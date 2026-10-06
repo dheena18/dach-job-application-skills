@@ -73,17 +73,17 @@ through.
    one, follow `references/gap-and-weakness-framing.md`: brief, factual,
    immediate pivot to readiness. Never manufacture a confession for
    something the posting never asked about.
-6. **Extract the resume's style** by running `scripts/docx_inspect.py` on
+6. **Extract the resume's style** by running `skills/_shared/scripts/docx_inspect.py` on
    the actual resume file being submitted for this application — see
    `visual-consistency.md` for what to pull out (heading font/color, accent
    color, body font/size, dates color if used).
 7. **Build the plan and generate the docx**: write the letter content as a
-   plan (see the docstring in `scripts/build_cover_letter_docx.py`) and run
+   plan (see the docstring in `skills/cover-letter-writer/scripts/build_cover_letter_docx.py`) and run
    it against the extracted style profile.
-8. **Lint it**: run `scripts/lint_letter.py <de|en> <file.txt or plan.json>`
+8. **Lint it**: run `skills/cover-letter-writer/scripts/lint_letter.py <de|en> <file.txt or plan.json>`
    against `references/banned-phrases-de-en.md`. Fix everything flagged —
    don't just note it and move on.
-9. **Check length**: `scripts/check_pages.py pages <file.docx>` must report
+9. **Check length**: `python skills/_shared/scripts/check_pages.py pages <file.docx>` (uses Word on Windows if present, otherwise LibreOffice; needs `pip install -r requirements.txt`) must report
    1. Word count should land inside the target range given in the relevant
    `letter-structure-*.md` file — longer is not more convincing.
 10. **Run the genericness test** (this cannot be scripted): read the

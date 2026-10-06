@@ -7,7 +7,7 @@ plainly if none of them do, or if a posting needs tailoring first.
 ## What it does
 
 - Runs a deterministic specialized-skill-overlap comparison across all
-  eight resumes (`scripts/compare_resumes.py`), ranking by the posting's
+  eight resumes (`skills/resume-matcher/scripts/compare_resumes.py`), ranking by the posting's
   distinguishing vocabulary rather than raw keyword-match percentage, since
   shared tools (Python, Docker, AWS) inflate every resume's overlap almost
   identically and tell you nothing about fit.
@@ -50,8 +50,7 @@ A verdict in words, backed by quoted posting language and the
 
 ## Requirements
 
-Same as `resume-tailor`: Python 3 with `python-docx` and `simplemma`
-installed.
+Python 3 with the packages in the repo's `requirements.txt`.
 
 ## Files
 
@@ -71,7 +70,6 @@ resume-matcher/
 │                                 rather than generic, since that's the
 │                                 whole point of this skill
 └── scripts/
-    ├── keyword_audit.py       (shared design with resume-tailor)
     └── compare_resumes.py     Runs specialized-term overlap across all
                                eight resumes in the detected language
 ```

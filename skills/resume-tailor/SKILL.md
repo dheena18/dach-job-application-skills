@@ -40,7 +40,7 @@ of physically reordering paragraphs.
    master, never re-tailor an already-tailored file (see the master-resume
    principle in `format-pipeline.md`). Get the full posting text, not just
    a summary of it.
-2. **Build the fit table.** Run `scripts/keyword_audit.py --exclude "Company
+2. **Build the fit table.** Run `skills/_shared/scripts/keyword_audit.py --exclude "Company
    Name,City"` (always pass the posting's actual company name and location —
    otherwise they show up in the output as "missing keywords," which they
    are not) as a starting point, then do the actual must-have/nice-to-have/
@@ -64,7 +64,7 @@ of physically reordering paragraphs.
    without the substance). Skipping straight to "the score is X%" and
    stopping there is an incomplete job even if the number itself is
    accurate.
-3. **Inspect the master's structure** with `scripts/docx_inspect.py` — you
+3. **Inspect the master's structure** with `skills/_shared/scripts/docx_inspect.py` — you
    need the exact paragraph/run/formatting map before deciding which
    content goes where.
 4. **Decide the reassignment**: which bullet's content (with its own bold-
@@ -76,9 +76,9 @@ of physically reordering paragraphs.
    no chase for a suspiciously perfect overall match.
 5. **Apply and verify**, following `format-pipeline.md` steps 5 onward:
    build the plan, run `docx_rewrite.py`, validate, check real page count,
-   run `scripts/check_ats.py both` (the same check `ats-resume-check`
+   run `skills/_shared/scripts/check_ats.py both` (the same check `ats-resume-check`
    performs standalone), look at the rendered PDF beside the master's.
-6. **Save the tailored file** to the output location, named to identify the
+6. **Save the tailored file** to `output/resume-tailor/`, named to identify the
    target application, never overwriting the master. See "Output location
    and naming" in `format-pipeline.md`.
 7. **Report back**: the fit table, what was reordered and why, what was

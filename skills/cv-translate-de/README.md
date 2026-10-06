@@ -39,8 +39,8 @@ same document, with the same look.
 
 ## What it does not do
 
-- It doesn't tailor content to a specific job posting (that's a separate,
-  future skill).
+- It doesn't tailor content to a specific job posting (that's the separate
+  `resume-tailor` skill).
 - It doesn't write cover letters.
 - It doesn't invent, drop, or improve on any fact, claim, or number from
   your original resume.
@@ -67,13 +67,11 @@ suffix: `YourResume.docx` → `YourResume-DE.docx` and `YourResume-DE.pdf`.
 
 ## Requirements
 
-- Microsoft Word installed (used via COM automation for accurate page-count
-  checking and PDF export — this is more accurate than a generic converter
-  since it's the same rendering engine you'd actually open the file in).
-- Python 3 with `python-docx`, `pywin32`, `defusedxml`, and `pypdf`
-  installed (`pip install python-docx pywin32 defusedxml pypdf`).
-- Windows (the page-count/PDF-export step uses Word COM automation, which
-  is Windows-only; the rest of the pipeline is platform-independent).
+- Python 3 with the packages in the repo's `requirements.txt`
+  (`pip install -r requirements.txt`).
+- For page count and PDF export: LibreOffice (any OS) or, on Windows,
+  Microsoft Word + `pywin32`. `skills/_shared/scripts/check_pages.py`
+  auto-detects whichever is available.
 
 ## Files in this skill
 
@@ -87,12 +85,11 @@ cv-translate-de/
 │   └── format-pipeline.md            The technical docx/page-count/ATS pipeline,
 │                                     step by step, including overflow handling
 └── scripts/
-    ├── docx_inspect.py               Dumps a docx's exact paragraph/run structure
-    ├── docx_rewrite.py               Applies a rewrite plan, preserving formatting
     ├── scale_spacing.py              Approved-only spacing compression (never font)
-    ├── check_pages.py                Real page count + PDF export via Word COM
-    ├── lint_german.py                Mechanical German-typography/AI-tell scan
-    └── check_ats.py                  ATS-readability check on the exported PDF
+    └── lint_german.py                Mechanical German-typography/AI-tell scan
+
+Shared tools (docx_inspect, docx_rewrite, validate_docx, check_pages, check_ats)
+live in `skills/_shared/scripts/`.
 ```
 
 ## Known limitations
@@ -105,6 +102,6 @@ cv-translate-de/
   structured-autofill system's fixed fields even when the text itself
   parses fine — a property of having those sections at all, not something
   this skill can avoid.
-- Built and tested on Windows with Microsoft Word available. The Word-COM
-  dependency in `check_pages.py` would need a LibreOffice-based substitute
-  on macOS/Linux.
+- Built and tested on Windows with Word; the LibreOffice path of
+  `check_pages.py` is the cross-platform route and may paginate slightly
+  differently from Word.

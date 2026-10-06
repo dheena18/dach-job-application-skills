@@ -41,13 +41,12 @@ just as important, what it doesn't.
    skipped.
 2. **Run both checks:**
    ```
-   python scripts/check_ats.py both <file.docx> <file.pdf> \
+   python skills/_shared/scripts/check_ats.py both <file.docx> <file.pdf> \
      --email <email> --phone <phone> --name <full name> \
      --expect-pages <n> --headings-in-order <SECTION1> <SECTION2> ...
    ```
-   If you don't have a PDF yet, export one first (Word/LibreOffice, or
-   reuse `cv-translate-de`'s `check_pages.py` pattern if that skill is
-   present) — don't skip the PDF pass just because it takes an extra step.
+   If you don't have a PDF yet, export one first
+   (`python skills/_shared/scripts/check_pages.py pdf <file.docx> <out.pdf>`) — don't skip the PDF pass just because it takes an extra step.
 3. **Report findings plainly**, split into what's a real parsing risk
    (table, multi-column layout, header/footer content, missing text layer,
    broken reading order, encoding corruption) versus what's a softer,

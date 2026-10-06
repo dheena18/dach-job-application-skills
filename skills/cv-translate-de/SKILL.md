@@ -62,7 +62,7 @@ Read this file fully before starting. Load the reference files as follows:
    exactly)? Is there a specific German-titled degree/certificate wording to
    use (see `terminology-and-facts.md` on degree titles) rather than
    guessing?
-2. **Inspect the source structure** with `scripts/docx_inspect.py` — don't
+2. **Inspect the source structure** with `skills/_shared/scripts/docx_inspect.py` — don't
    skip this even for a document you've already read visually. The visual
    read tells you what it says; the structural inspect tells you exactly
    which runs carry which formatting, which is what you need to reproduce it.
@@ -81,11 +81,11 @@ Read this file fully before starting. Load the reference files as follows:
    overflows have needed values well below 0.5), lint with
    `lint_german.py --plan plan.json` (always pass `--plan`, so untouched
    original-language titles aren't flagged as German mistakes), check
-   ATS-readability on the exported PDF with `check_ats.py`, look at the
+   ATS-readability on the exported PDF with `skills/_shared/scripts/check_ats.py`, look at the
    actual rendered pages.
 5. **Save both the `.docx` and the exported `.pdf`** to a separate output
    folder — never next to or over the source file — named
-   `<original-filename>-DE.docx` / `-DE.pdf`. See "Output location and file
+   `<original-filename>-DE.docx` / `-DE.pdf`. Use `output/cv-translate-de/`. See "Output location and file
    naming" in `format-pipeline.md`.
 6. **Report back**: what was translated, what was deliberately kept
    untouched and why (tool names, company names, degree title, etc.), the
@@ -109,7 +109,7 @@ Read this file fully before starting. Load the reference files as follows:
 
 ## Verifying your own output
 
-Before calling this done: run `scripts/lint_german.py --plan plan.json` on the result, check
+Before calling this done: run `skills/cv-translate-de/scripts/lint_german.py --plan plan.json` on the result, check
 the rendered page count matches the source, and actually look at the
 exported PDF side-by-side with the source PDF. If anything is only "probably
 fine", it isn't verified — check it.
