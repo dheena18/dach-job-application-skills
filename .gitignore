@@ -1,0 +1,17 @@
+# Personal documents - never commit
+Resume/
+job-resume/
+output/
+*.docx
+*.pdf
+*.doc
+*.odt
+
+# Local / tooling
+.env
+.env.*
+__pycache__/
+*.pyc
+.odysseus*
+.DS_Store
+Thumbs.db
